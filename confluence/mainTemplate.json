@@ -826,6 +826,9 @@
                     "vnetResourceGroup":{
                         "value": "[parameters('vnetResourceGroup')]"
                     },
+                    "gtwyStaticIP": {
+                        "value": "[parameters('gtwyStaticIP')]"
+                    },
                     "jumpboxName": {
                         "value": "[reference('vpcTemplate').outputs.jumpboxName.value]"
                     },
@@ -948,10 +951,7 @@
                     },
                     "dbDatabaseName": {
                         "value": "[reference('confluenceTemplate').outputs.dbDatabaseName.value]"
-                    },
-                    "gtwyStaticIP": {
-                        "value": "[parameters('gtwyStaticIP')]"
-                    }
+                    }                    
                 }
             }
         }
