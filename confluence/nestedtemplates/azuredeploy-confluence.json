@@ -832,6 +832,9 @@
                     "postgresDbCollation": {
                         "value": "[parameters('postgresDbCollation')]"
                     },
+                    "vnetResourceGroup": {
+                        "value": "[parameters('vnetResourceGroup')]"
+                    },
                     "vnetName": {
                         "value": "[parameters('vnetName')]"
                     },

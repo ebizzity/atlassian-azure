@@ -34,6 +34,9 @@
                 "description": "The password for the dedicated database user."
             }
         },
+        "vnetResourceGroup": {
+            "type": "string"
+        },
         "dbTier": {
             "type": "string",
             "allowedValues": [
@@ -331,7 +334,8 @@
             "name": "[concat(parameters('dbServerName'), '/', parameters('clusterDbAccessNetworkRule'))]",
             "apiVersion": "2015-05-01-preview",
             "properties": {
-                "virtualNetworkSubnetId": "[resourceId('Microsoft.Network/virtualNetworks/subnets/', parameters('vnetName'), parameters('appSubnetName'))]",
+                "virtualNetworkSubnetId": "[concat(resourceId(parameters('vnetResourceGroup'),'Microsoft.Network/virtualNetworks', parameters('vnetName')), '/subnets/', parameters('appSubnetName'))]",
+                //"[resourceId('Microsoft.Network/virtualNetworks/subnets/', parameters('vnetName'), parameters('appSubnetName'))]",
                 "ignoreMissingVnetServiceEndpoint": false
             },
             "dependsOn": [
