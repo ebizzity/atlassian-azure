@@ -739,7 +739,7 @@
             "type": "Microsoft.Resources/deployments",
             "condition": "[and(parameters('dbCreateNew'), equals(parameters('dbType'), 'sqlserver'))]",
             "dependsOn": [
-                "[variables('workspace').name]"
+                "[concat('Microsoft.OperationalInsights/workspaces/', variables('workspace').name)]"
             ],
             "properties": {
                 "mode": "Incremental",
@@ -793,7 +793,7 @@
             "type": "Microsoft.Resources/deployments",
             "condition": "[and(parameters('dbCreateNew'), equals(parameters('dbType'), 'postgres'))]",
             "dependsOn": [
-                "[variables('workspace').name]"
+                "[concat('Microsoft.OperationalInsights/workspaces/', variables('workspace').name)]"
             ],
             "properties": {
                 "mode": "Incremental",
@@ -907,8 +907,8 @@
             "name": "appGtwyTemplate",
             "type": "Microsoft.Resources/deployments",
             "dependsOn": [
-                "[variables('workspace').name]",
-                "[variables('gtwyIpName')]"
+                "[variables('gtwyIpName')]",
+                "[concat('Microsoft.OperationalInsights/workspaces/', variables('workspace').name)]"
             ],
             "properties": {
                 "mode": "Incremental",
@@ -961,6 +961,7 @@
             "name": "vmssTemplate",
             "type": "Microsoft.Resources/deployments",
             "dependsOn": [
+                "[concat('Microsoft.OperationalInsights/workspaces/', variables('workspace').name)]",
                 "[variables('storage').name]",
                 "[variables('storage').premiumName]",
                 "[variables('dbTemplate')]",
@@ -1120,7 +1121,6 @@
             "type": "Microsoft.Resources/deployments",
             "condition": "[parameters('enableApplicationInsights')]",
             "dependsOn": [
-                "[variables('workspace').name]",
                 "[variables('dbTemplate')]"
             ],
             "properties": {
@@ -1142,7 +1142,7 @@
             "type": "Microsoft.Resources/deployments",
             "condition": "[parameters('enableAnalytics')]",
             "dependsOn": [
-                "[variables('workspace').name]",
+                "[concat('Microsoft.OperationalInsights/workspaces/', variables('workspace').name)]",
                 "[variables('dbTemplate')]"
             ],
             "properties": {
