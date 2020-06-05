@@ -787,6 +787,9 @@
                     "enableAnalytics": {
                         "value": "[parameters('enableAnalytics')]"
                     },
+                     "vnetResourceGroup": {
+                        "value": "[parameters('vnetResourceGroup')]"
+                    },
                     "jumpboxPublicIpAddress": {
                         "value": "[parameters('jumpboxPublicIpAddress')]"
                     }
