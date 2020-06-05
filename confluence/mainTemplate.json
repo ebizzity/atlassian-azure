@@ -897,9 +897,6 @@
                     },
                     "prefix": {
                         "value": "confluence"
-                    },
-                    "gtwyStaticIP": {
-                        "value": "[parameters('gtwyStaticIP')]"
                     }
                 }
             }
@@ -951,6 +948,9 @@
                     },
                     "dbDatabaseName": {
                         "value": "[reference('confluenceTemplate').outputs.dbDatabaseName.value]"
+                    },
+                    "gtwyStaticIP": {
+                        "value": "[parameters('gtwyStaticIP')]"
                     }
                 }
             }
