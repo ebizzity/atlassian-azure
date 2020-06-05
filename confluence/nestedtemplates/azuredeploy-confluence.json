@@ -408,6 +408,9 @@
         "gtwySubnetName": {
             "type": "string"
         },
+        "gtwyStaticIP": {
+            "type": "string"
+        },
         "jumpboxName": {
             "type": "string"
         },
@@ -958,6 +961,9 @@
                     },
                     "vnetResourceGroup": {
                         "value": "[parameters('vnetResourceGroup')]"
+                    },
+                    "gtwyStaticIP": {
+                        "value": "[parameters('gtwyStaticIP')]"
                     },
                     "enableAnalytics": {
                         "value": "[parameters('enableAnalytics')]"

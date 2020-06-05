@@ -175,6 +175,12 @@
                 "description": "Name of subnet where the application gateway is to be deployed"
             }
         },
+        "gtwyStaticIP": {
+            "type": "string",
+            "metadata": {
+                "description": "Static IP for the Application Gateway"
+            }
+        },
         "jumpboxSubnetName": {
             "type": "string",
             "metadata": {
@@ -891,6 +897,9 @@
                     },
                     "prefix": {
                         "value": "confluence"
+                    },
+                    "gtwyStaticIP": {
+                        "value": "[parameters('gtwyStaticIP')]"
                     }
                 }
             }
