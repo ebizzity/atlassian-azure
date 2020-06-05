@@ -320,6 +320,9 @@
                 "description": "The number of Confluence nodes in the cluster. Maximum is 6 nodes."
             }
         },
+        "vnetResourceGroup": {
+            "type": "string"
+        },
         "clusterVmSize": {
             "type": "string",
             "defaultValue": "Standard_DS3_v2",
@@ -950,6 +953,9 @@
                     "workspaceName": {
                         "value": "[variables('workspace').name]"
                     },
+                    "vnetResourceGroup": {
+                        "value": "[parameters('vnetResourceGroup')]"
+                    },
                     "enableAnalytics": {
                         "value": "[parameters('enableAnalytics')]"
                     }
@@ -1045,6 +1051,9 @@
                     },
                     "confAppTitle": {
                         "value": "[parameters('confAppTitle')]"
+                    },
+                    "vnetResourceGroup": {
+                        "value": "[parameters('vnetResourceGroup')]"
                     },
                     "vnetName": {
                         "value": "[parameters('vnetName')]"

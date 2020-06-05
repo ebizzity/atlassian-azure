@@ -49,6 +49,9 @@
         "gtwySubnetName": {
             "type": "string"
         },
+        "vnetResourceGroup": {
+            "type": "string"
+        },
         "sslBase64EncodedPfxCertificate": {
             "type": "string",
             "defaultValue": ""
@@ -156,7 +159,7 @@
                         "name": "[concat(variables('namespace'), 'appgwipconfig')]",
                         "properties": {
                             "subnet": {
-                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnetName'), variables('applicationGateway').frontend.subnet.name)]"
+                                "id": "[concat(resourceId(parameters('vnetResourceGroup'),'Microsoft.Network/virtualNetworks', parameters('vnetName')), '/subnets/', variables('applicationGateway').frontend.subnet.name)]"
                             }
                         }
                     }
@@ -176,7 +179,7 @@
                             "privateIPAddress": "[variables('applicationGateway').frontend.ipConfiguration.private.address]",
                             "privateIPAllocationMethod": "Static",
                             "subnet": {
-                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnetName'), variables('applicationGateway').frontend.subnet.name)]"
+                                "id": "[concat(resourceId(parameters('vnetResourceGroup'),'Microsoft.Network/virtualNetworks', parameters('vnetName')), '/subnets/', variables('applicationGateway').frontend.subnet.name)]"
                             }
                         }
                     }

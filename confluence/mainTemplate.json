@@ -817,7 +817,9 @@
                     "gtwySubnetName": {
                         "value": "[parameters('gtwySubnetName')]"
                     },
-
+                    "vnetResourceGroup":{
+                        "value": "[parameters('vnetResourceGroup')]"
+                    },
                     "jumpboxName": {
                         "value": "[reference('vpcTemplate').outputs.jumpboxName.value]"
                     },
