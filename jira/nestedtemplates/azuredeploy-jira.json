@@ -342,6 +342,9 @@
                 "description": "The Application Gateway size."
             }
         },
+        "vnetResourceGroup": {
+            "type": "string"
+        },
         "vnetName": {
             "type": "string",
             "metadata": {
@@ -359,6 +362,9 @@
             "metadata": {
                 "description": "The name of the Jira virtual network subnet where the Application Gateway is located."
             }
+        },
+        "gtwyStaticIP": {
+            "type": "string"
         },
         "jumpboxName": {
             "type": "string",
@@ -852,6 +858,12 @@
                     "workspaceName": {
                         "value": "[variables('workspace').name]"
                     },
+                    "vnetResourceGroup": {
+                        "value": "[parameters('vnetResourceGroup')]"
+                    },
+                    "gtwyStaticIP": {
+                        "value": "[parameters('gtwyStaticIP')]"
+                    },
                     "enableAnalytics": {
                         "value": "[parameters('enableAnalytics')]"
                     }
@@ -943,6 +955,9 @@
                     },
                     "jiraAppTitle": {
                         "value": "[parameters('jiraAppTitle')]"
+                    },
+                    "vnetResourceGroup": {
+                        "value": "[parameters('vnetResourceGroup')]"
                     },
                     "vnetName": {
                         "value": "[parameters('vnetName')]"

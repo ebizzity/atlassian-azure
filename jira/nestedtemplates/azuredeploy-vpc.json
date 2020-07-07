@@ -30,6 +30,30 @@
                 "description": "The SSH username to use to access the Jira nodes from the Jumpbox. Note that this is the only way to access the Jira nodes."
             }
         },
+        "jumpboxSubnetName": {
+            "type": "string",
+            "metadata": {
+                "description": "Name of subnet where the jumpbox is to be deployed"
+            }
+        },
+        "jumpboxSubnetPrefix": {
+            "type": "string",
+            "metadata": {
+                "description": "Address Prefix for the jumpbox Subnet"
+            }
+        },
+        "vnetResourceGroup": {
+            "type": "string",
+            "metadata": {
+                "description": "Resource Group where vnet is for deployment."
+            }
+        },
+        "vnetName": {
+            "type": "string",
+            "metadata": {
+                "description": "Name of VNet where resources are going to be deployed"
+            }
+        },
         "linuxOsType": {
             "type": "string",
             "defaultValue": "Canonical:UbuntuServer:18.04-LTS",
@@ -183,7 +207,7 @@
                 }
             }
         },
-        {
+       /*  {
             "type": "Microsoft.Network/virtualNetworks",
             "apiVersion": "2018-08-01",
             "name": "[variables('vnet').name]",
@@ -233,7 +257,7 @@
                     }
                 ]
             }
-        },
+        }, */
         {
             "type": "Microsoft.Network/networkInterfaces",
             "apiVersion": "2018-08-01",
@@ -256,7 +280,8 @@
                                 "id": "[resourceId('Microsoft.Network/publicIPAddresses/', variables('jumpbox').ip.name)]"
                             },
                             "subnet": {
-                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets/', variables('vnet').name, variables('jumpbox').subnet.name)]"
+                                //"id": "[resourceId('Microsoft.Network/virtualNetworks/subnets/', variables('vnet').name, variables('jumpbox').subnet.name)]"
+                                "id": "[concat(resourceId(parameters('vnetResourceGroup'),'Microsoft.Network/virtualNetworks', parameters('vnetName')), '/subnets/', parameters('jumpboxSubnetName'))]"
                             }
                         }
                     }

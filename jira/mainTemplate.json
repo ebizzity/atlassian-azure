@@ -12,7 +12,7 @@
         },
         "_artifactsLocation": {
             "type": "string",
-            "defaultValue": "https://bitbucket.org/atlassian/atlassian-azure-deployment/raw/master/jira/",
+            "defaultValue": "https://raw.githubusercontent.com/ebizzity/atlassian-azure/master/jira/",
             "metadata": {
                 "description": "The URL specifying the location of the installation files."
             }
@@ -160,6 +160,48 @@
             "defaultValue": "Atlassian Jira",
             "metadata": {
                 "description": "The name of the Jira site."
+            }
+        },
+         "vnetResourceGroup": {
+            "type": "string",
+            "metadata": {
+                "description": "Resource Group where vnet is for deployment."
+            }
+        },
+        "vnetName": {
+            "type": "string",
+            "metadata": {
+                "description": "Name of VNet where resources are going to be deployed"
+            }
+        },
+        "appSubnetName": {
+            "type": "string",
+            "metadata": {
+                "description": "Name of subnet where the app resources are to be deployed"
+            }
+        },
+        "gtwySubnetName": {
+            "type": "string",
+            "metadata": {
+                "description": "Name of subnet where the application gateway is to be deployed"
+            }
+        },
+        "gtwyStaticIP": {
+            "type": "string",
+            "metadata": {
+                "description": "Static IP for the Application Gateway"
+            }
+        },
+        "jumpboxSubnetName": {
+            "type": "string",
+            "metadata": {
+                "description": "Name of subnet where the jumpbox is to be deployed"
+            }
+        },
+        "jumpboxSubnetPrefix": {
+            "type": "string",
+            "metadata": {
+                "description": "Address prefix for the jumpboxSubnet"
             }
         },
         "dbHost": {
@@ -639,6 +681,18 @@
                     },
                     "linuxOsType": {
                         "value": "[parameters('linuxOsType')]"
+                    },
+                     "vnetResourceGroup": {
+                        "value": "[parameters('vnetResourceGroup')]"
+                    },
+                    "vnetName": {
+                        "value": "[parameters('vnetName')]"
+                    },
+                    "jumpboxSubnetName": {
+                        "value": "[parameters('jumpboxSubnetName')]"
+                    },
+                    "jumpboxSubnetPrefix": {
+                        "value": "[parameters('jumpboxSubnetPrefix')]"
                     }
                 }
             }
@@ -711,6 +765,21 @@
                     "jiraAppTitle": {
                         "value": "[parameters('jiraAppTitle')]"
                     },
+                    "vnetName": {
+                        "value": "[parameters('vnetName')]"
+                    },
+                    "appSubnetName": {
+                        "value": "[parameters('appSubnetName')]"
+                    },
+                    "gtwySubnetName": {
+                        "value": "[parameters('gtwySubnetName')]"
+                    },
+                    "vnetResourceGroup":{
+                        "value": "[parameters('vnetResourceGroup')]"
+                    },
+                    "gtwyStaticIP": {
+                        "value": "[parameters('gtwyStaticIP')]"
+                    },
                     "sshKey": {
                         "value": "[parameters('sshKey')]"
                     },
@@ -743,15 +812,6 @@
                     },
                     "appGtwyTier": {
                         "value": "[if(variables('isJiraClusterSizeUsed'), variables('clusterLookup').appGtwyTier[parameters('jiraClusterSize')], parameters('appGtwyTier'))]"
-                    },
-                    "vnetName": {
-                        "value": "[reference('vpcTemplate').outputs.vnetName.value]"
-                    },
-                    "appSubnetName": {
-                        "value": "[reference('vpcTemplate').outputs.appSubnetName.value]"
-                    },
-                    "gtwySubnetName": {
-                        "value": "[reference('vpcTemplate').outputs.gtwySubnetName.value]"
                     },
                     "jumpboxName": {
                         "value": "[reference('vpcTemplate').outputs.jumpboxName.value]"

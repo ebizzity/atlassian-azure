@@ -70,6 +70,9 @@
         "description": "The name of the subnet within the Jira virtual network where the Jira cluster is located."
       }
     },
+    "vnetResourceGroup": {
+      "type": "string"
+    },
     "clusterDbAccessNetworkRule": {
       "type": "string",
       "defaultValue": "allowClusterDbAccess",
@@ -223,7 +226,8 @@
       "apiVersion": "2017-12-01",
       "scale": null,
       "properties": {
-        "virtualNetworkSubnetId": "[resourceId('Microsoft.Network/virtualNetworks/subnets/', parameters('vnetName'), parameters('appSubnetName'))]",
+        "virtualNetworkSubnetId": "[concat(resourceId(parameters('vnetResourceGroup'),'Microsoft.Network/virtualNetworks', parameters('vnetName')), '/subnets/', parameters('appSubnetName'))]",
+        //"virtualNetworkSubnetId": "[resourceId('Microsoft.Network/virtualNetworks/subnets/', parameters('vnetName'), parameters('appSubnetName'))]",
         "ignoreMissingVnetServiceEndpoint": false
       },
       "dependsOn": [

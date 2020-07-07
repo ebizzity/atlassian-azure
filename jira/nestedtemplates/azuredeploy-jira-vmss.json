@@ -199,6 +199,9 @@
                 "description": "The name of the Jira virtual network."
             }
         },
+        "vnetResourceGroup": {
+            "type": "string"
+        },
         "appSubnetName": {
             "type": "string",
             "metadata": {
@@ -670,7 +673,7 @@
                                             "name": "[concat(variables('namespace'), 'scalset-ipconfig')]",
                                             "properties": {
                                                 "subnet": {
-                                                    "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets/', parameters('vnetName'), parameters('appSubnetName'))]"
+                                                    "id": "[concat(resourceId(parameters('vnetResourceGroup'),'Microsoft.Network/virtualNetworks', parameters('vnetName')), '/subnets/', parameters('appSubnetName'))]"
                                                 },
                                                 "ApplicationGatewayBackendAddressPools": [
                                                     {
