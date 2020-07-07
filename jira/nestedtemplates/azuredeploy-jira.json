@@ -633,6 +633,9 @@
                     "vnetName": {
                         "value": "[parameters('vnetName')]"
                     },
+                    "vnetResourceGroup": {
+                        "value": "[parameters('vnetResourceGroup')]"
+                    },
                     "appSubnetName": {
                         "value": "[parameters('appSubnetName')]"
                     },
@@ -686,6 +689,9 @@
                     },
                     "vnetName": {
                         "value": "[parameters('vnetName')]"
+                    },
+                    "vnetResourceGroup": {
+                        "value": "[parameters('vnetResourceGroup')]"
                     },
                     "appSubnetName": {
                         "value": "[parameters('appSubnetName')]"

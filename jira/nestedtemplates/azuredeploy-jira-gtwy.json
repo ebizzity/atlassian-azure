@@ -379,7 +379,7 @@
                         "name": "[variables('applicationGateway').frontend.ipConfiguration.private.name]",
                         "type": "Microsoft.Network/applicationGateways/frontendIPConfigurations",
                         "properties": {
-                            "privateIPAddress": "[variables('applicationGateway').frontend.ipConfiguration.private.address]",
+                            "privateIPAddress": "[parameters('gtwyStaticIP')]",
                             "privateIPAllocationMethod": "Static",
                             "subnet": {
                                 "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets/', parameters('vnetName'), variables('applicationGateway').frontend.subnet.name)]"
