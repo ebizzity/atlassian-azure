@@ -77,7 +77,7 @@
             "provider": "2F0AF47A-92C7-413A-9009-C3815BFF7AF6"
         },
         "vnet": {
-            "name": "[concat(variables('namespace'), 'vnet')]",
+            "name": "[parameters('vnetName')]",
             "prefix": "10.0.0.0/16"
         },
         "gtwySubnet": {
