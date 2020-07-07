@@ -115,8 +115,8 @@
                 "name": "[concat(variables('namespace'), '-jumpboxip-', uniqueString(resourceGroup().id))]"
             },
             "subnet": {
-                "name": "[concat(variables('namespace'), 'jumpboxsubnet')]",
-                "prefix": "10.0.3.0/24"
+                "name": "[parameters('jumpboxSubnetName')]",
+                "prefix": "[parameters('jumpboxSubnetPrefix')]"
             },
             "nics": {
                 "public": "[concat(variables('namespace'), 'jumpbox', 'nic', 'public')]"
@@ -265,7 +265,7 @@
             "location": "[parameters('location')]",
             "tags": "[variables('tags')]",
             "dependsOn": [
-                "[concat('Microsoft.Network/publicIPAddresses/', variables('jumpbox').ip.name)]",
+                "[concat('Microsoft.Network/publicIPAddresses/', variables('jumpbox').ip.name)]"
                 //"[concat('Microsoft.Network/virtualNetworks/', variables('vnet').name)]"
             ],
             "properties": {
